@@ -1,0 +1,2 @@
+b: <% time_now() %>
+c: <% time_now(false) %>

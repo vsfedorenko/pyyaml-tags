@@ -1,0 +1,3 @@
+b: <% random_str(10) %>
+c: <% random_str(100, true) %>
+d: <% random_str(50, false, True) %>

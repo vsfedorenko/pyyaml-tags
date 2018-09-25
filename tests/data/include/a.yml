@@ -1,0 +1,13 @@
+b: <% include(b_dir/b.yml) %>
+
+c: <% include(path="c_dir/c.yml") %>
+
+# I've added many spaces to test regexp. It's ok
+# Crazy-y-y-y indentation !!!
+d: <%         include       (path="d_dir/d*.yml")  %>
+
+# Standard dictionary syntax
+e: !include {path: "e_dir/e_subdir/e*.yml", encoding: "utf-8"}
+
+# Standard list syntax
+f: !include ["f_dir/f.yml", "utf-8"]
