@@ -1,13 +1,17 @@
+# coding: utf-8
+from __future__ import absolute_import, division, print_function, \
+    unicode_literals
+
 import os
 
+from six import with_metaclass
+
 from ..base import BaseTag
-from ..meta import TagMetaClass
+from ..registry import TagAutoRegister
 
 
-class EnvTag(BaseTag):
+class EnvTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'env'
-
-    __metaclass__ = TagMetaClass
 
     def __new__(cls):
         return super(EnvTag, cls).__new__(cls)
@@ -24,3 +28,6 @@ class EnvTag(BaseTag):
             )
 
         return _prefix + str(os.environ[var]) + _suffix
+
+
+__all__ = (EnvTag,)

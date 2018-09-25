@@ -1,15 +1,19 @@
+# coding: utf-8
+from __future__ import absolute_import, division, print_function, \
+    unicode_literals
+
 import string
 import sys
 from random import choice, randint, random
 
+from six import with_metaclass
+
 from ..base import BaseTag
-from ..meta import TagMetaClass
+from ..registry import TagAutoRegister
 
 
-class RandomIntTag(BaseTag):
+class RandomIntTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'random_int'
-
-    __metaclass__ = TagMetaClass
 
     def __new__(cls):
         return super(RandomIntTag, cls).__new__(cls)
@@ -18,7 +22,7 @@ class RandomIntTag(BaseTag):
                    a=0, b=None,
                    *args, **kwargs):
         if not b:
-            b = sys.maxint
+            b = sys.maxsize
 
         rand = randint(a, b)
 
@@ -28,10 +32,8 @@ class RandomIntTag(BaseTag):
         return rand
 
 
-class RandomFloatTag(BaseTag):
+class RandomFloatTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'random_float'
-
-    __metaclass__ = TagMetaClass
 
     def __new__(cls):
         return super(RandomFloatTag, cls).__new__(cls)
@@ -46,10 +48,8 @@ class RandomFloatTag(BaseTag):
         return rand
 
 
-class RandomStrTag(BaseTag):
+class RandomStrTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'random_str'
-
-    __metaclass__ = TagMetaClass
 
     def __new__(cls):
         return super(RandomStrTag, cls).__new__(cls)
@@ -75,3 +75,6 @@ class RandomStrTag(BaseTag):
             rand = rand.lower()
 
         return _prefix + rand + _suffix
+
+
+__all__ = (RandomIntTag, RandomFloatTag, RandomStrTag)

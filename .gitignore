@@ -68,7 +68,9 @@ Session.vim
 /[Ll]ocal/
 /[Ss]cripts/
 /pyvenv.cfg
+/.venv
 /.venv/
+/.venv*/
 pip-selfcheck.json
 ### Eclipse template
 
@@ -165,8 +167,10 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
-.tox/
+/test-reports/
+/tests-reports/
+/htmlcov/
+/.tox/
 .coverage
 .coverage.*
 .cache
@@ -214,6 +218,7 @@ celerybeat-schedule
 /.env/
 /env/
 /venv/
+/venv*/
 /ENV/
 /env.bak/
 /venv.bak/

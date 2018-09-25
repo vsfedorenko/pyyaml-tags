@@ -1,14 +1,18 @@
+# coding: utf-8
+from __future__ import absolute_import, division, print_function, \
+    unicode_literals
+
 from datetime import datetime
 from time import time
 
+from six import with_metaclass
+
 from ..base import BaseTag
-from ..meta import TagMetaClass
+from ..registry import TagAutoRegister
 
 
-class TimeNowTag(BaseTag):
+class TimeNowTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'time_now'
-
-    __metaclass__ = TagMetaClass
 
     def _from_yaml(self, _loader, _work_dir, _prefix, _suffix,
                    timestamp=True, fmt="%Y-%m-%d %H:%M:%S",
@@ -18,3 +22,6 @@ class TimeNowTag(BaseTag):
 
         now = datetime.now()
         return _prefix + now.strftime(fmt) + _suffix
+
+
+__all__ = (TimeNowTag,)

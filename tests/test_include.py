@@ -2,19 +2,20 @@ import io
 import unittest
 
 import yaml
-
-from yaml_tags import require as yaml_require_tags
+from path import Path
+from yaml_tags import tag_registry
 
 
 class IncludeTestCase(unittest.TestCase):
+    cwd = Path(__file__).parent.abspath()
 
     def setUp(self):
         super(IncludeTestCase, self).setUp()
 
-        yaml_require_tags('include')
+        tag_registry.require('include')
 
     def test_on_data(self):
-        with io.open('data/include/a.yml') as fh:
+        with io.open(self.cwd / 'data/include/a.yml') as fh:
             data = yaml.load(fh)
         self.assertIsNotNone(data)
         self.assertDictEqual(data, {

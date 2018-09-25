@@ -3,21 +3,22 @@ import os
 import unittest
 
 import yaml
-
-from yaml_tags import require as yaml_require_tags
+from path import Path
+from yaml_tags import tag_registry
 
 
 class EnvironmentTestCase(unittest.TestCase):
+    cwd = Path(__file__).parent.abspath()
 
     def setUp(self):
         super(EnvironmentTestCase, self).setUp()
 
-        yaml_require_tags('env')
+        tag_registry.require('env')
 
     def test_on_data(self):
         os.environ['WORLD'] = 'World'
 
-        with io.open('data/env/a.yml') as fh:
+        with io.open(self.cwd / 'data/env/a.yml') as fh:
             data = yaml.load(fh)
 
         self.assertIsNotNone(data)

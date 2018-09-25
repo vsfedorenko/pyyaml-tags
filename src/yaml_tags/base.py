@@ -1,5 +1,10 @@
+# coding: utf-8
+from __future__ import absolute_import, division, print_function, \
+    unicode_literals
+
 import ast
 import re
+from abc import abstractmethod as abstract_method
 
 import yaml
 from path import Path
@@ -86,6 +91,7 @@ class BaseTag(object):
         return dumper \
             .represent_yaml_object(self.yaml_tag, data, self.__class__)
 
+    @abstract_method
     def _from_yaml(self, _loader, _work_dir, _prefix, _suffix,
                    *args, **kwargs):
 
@@ -101,7 +107,6 @@ class BaseTag(object):
 
         return work_dir
 
-    @classmethod
     def __parse_implicit_tag_match(self, tag_match):
         prefix, tag_name, params_w_brackets, params_wo_brackets, suffix = \
             tag_match.groups()
@@ -121,9 +126,12 @@ class BaseTag(object):
             ast_node_keywords = ast_node.value.keywords
             for ast_node_arg in ast_node_args:
                 try:
-                    self.__convert_bool_values(ast_node_arg)
+                    self.__convert_node_bool_value(ast_node_arg)
 
-                    arg_value = ast.literal_eval(ast_node_arg)
+                    if hasattr(ast_node_arg, 'id'):
+                        arg_value = ast.literal_eval(ast_node_arg.id)
+                    else:
+                        arg_value = ast.literal_eval(ast_node_arg)
                 except:
                     arg_value = ast.literal_eval(
                         '"' + params_wo_brackets + '"'
@@ -137,17 +145,22 @@ class BaseTag(object):
 
         return prefix, suffix, args, kwargs
 
-    @classmethod
-    def __convert_bool_values(cls, ast_node_arg):
+    def __convert_node_bool_value(self, ast_node_arg):
+        if not hasattr(ast_node_arg, 'id'):
+            return
+
+        arg_id = ast_node_arg.id
+        if not arg_id:
+            return
+
         for bool_val in [True, False]:
-            if not hasattr(ast_node_arg, 'id'):
-                continue
-
-            arg_id = ast_node_arg.id
-            if not arg_id:
-                continue
             arg_id = str(arg_id).lower()
+            bool_var_str = str(bool_val)
+            bool_val_str_lower = bool_var_str.lower()
 
-            bool_val_str = str(bool_val)
-            if arg_id == bool_val_str.lower():
-                ast_node_arg.id = bool_val_str
+            if arg_id == bool_val_str_lower:
+                ast_node_arg.col_offset = 0
+                ast_node_arg.id = bool_var_str
+
+
+__all__ = (BaseTag,)

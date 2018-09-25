@@ -2,21 +2,19 @@ from setuptools import find_packages, setup
 
 setup(
     name='pyyaml-tags',
-    packages=find_packages(),
-
-    description='Adds to PyYAML custom tags support',
-    url='https://github.com/meiblorn/pyyaml-tags',
-    license='GNU General Public License v3 or later (GPLv3+)',
-    author='meiblorn (Vadim Fedorenko)',
-    author_email='meiblorn@gmail.com',
-    keywords='yaml PyYAML tags',
+    packages=find_packages('src'),
+    package_dir={'': 'src'},
 
     use_scm_version={
         'version_scheme': 'guess-next-dev',
-        'write_to': 'yaml_tags/__version__.py',
+        'write_to': 'src/yaml_tags/__version__.py',
     },
 
-    python_requires='>=2.7',
+    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
+
+    setup_requires=[
+        'pytest-runner', 'setuptools_scm', 'setuptools_scm_git_archive'
+    ],
 
     tests_require=['pytest'],
     test_suite='tests',

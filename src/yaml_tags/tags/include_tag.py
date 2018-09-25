@@ -1,3 +1,7 @@
+# coding: utf-8
+from __future__ import absolute_import, division, print_function, \
+    unicode_literals
+
 import collections
 import io
 import os
@@ -5,18 +9,18 @@ import re
 import sys
 from glob import iglob
 
+import six
 import yaml
+from six import with_metaclass
 
 from ..base import BaseTag
-from ..meta import TagMetaClass
+from ..registry import TagAutoRegister
 
 
-class IncludeTag(BaseTag):
+class IncludeTag(with_metaclass(TagAutoRegister(), BaseTag)):
     tag_name = 'include'
 
     wildcards_regex = re.compile(r'^.*(\*|\?|\[!?.+\]).*$')
-
-    __metaclass__ = TagMetaClass
 
     def __new__(cls):
         instance = super(IncludeTag, cls).__new__(cls)
@@ -41,13 +45,17 @@ class IncludeTag(BaseTag):
             self._list_files(path, recursive)
         )
 
+        # Python 3 iterator fix
+        if not isinstance(yaml_data, list):
+            yaml_data = list(yaml_data)
+
         if all(isinstance(el, list) for el in yaml_data):
             return [el for sublist in yaml_data for el in sublist]
 
         if all(isinstance(el, dict) for el in yaml_data):
             result_dict = collections.defaultdict()
             for d in yaml_data:
-                for k, v in d.iteritems():  # d.items() in Python 3+
+                for k, v in six.iteritems(d):
                     result_dict[k] = v
             return dict(result_dict)
 
@@ -65,3 +73,6 @@ class IncludeTag(BaseTag):
 
         with io.open(path, encoding=encoding) as fh:
             return yaml.load(fh, type(loader))
+
+
+__all__ = (IncludeTag,)
