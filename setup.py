@@ -20,7 +20,7 @@ setup(
     test_suite='tests',
 
     classifiers=[
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: MIT',
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',

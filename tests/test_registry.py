@@ -118,5 +118,6 @@ class RegistryTestCase(unittest.TestCase):
         self.assertTrue(TestTag1.registered)
         self.assertTrue(TestTag2.registered)
 
+
 if __name__ == '__main__':
     unittest.main()

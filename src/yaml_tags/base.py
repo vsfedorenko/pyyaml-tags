@@ -132,7 +132,7 @@ class BaseTag(object):
                         arg_value = ast.literal_eval(ast_node_arg.id)
                     else:
                         arg_value = ast.literal_eval(ast_node_arg)
-                except:
+                except Exception as e:
                     arg_value = ast.literal_eval(
                         '"' + params_wo_brackets + '"'
                     )
