@@ -16,3 +16,16 @@ install:
 
 script:
 - tox
+
+before_deploy:
+- "echo 'Deploying to PYPI'"
+
+deploy:
+  provider: pypi
+  user: ${PYPI_USERNAME}
+  password: ${PYPI_PASSWORD}
+  on:
+    branch: master
+
+after_deploy:
+- "echo 'Successfully deployed to PYPI'"
