@@ -5,3 +5,6 @@
           Changed `authors.md` and `changelog.md` files
  
 - 1.0.2 - Changed configuration for the Travis CI PyPI deployment 
+
+- 1.0.3 - Changed Travis CI PyPI deployment destination Python version.
+          Reconfigured 'deploy_on' condition. 
