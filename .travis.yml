@@ -21,17 +21,18 @@ script:
 - tox
 
 after_success:
-  - codecov
+- codecov
 
 before_deploy:
-- "echo 'Deploying to PYPI'"
+- echo 'Deploying to PYPI'
 
 deploy:
   provider: pypi
-  user: ${PYPI_USERNAME}
-  password: ${PYPI_PASSWORD}
+  user: meiblorn
+  password:
+    secure: Vz8jZhN3Dh9XEOp2HvrrGC0001gSIyun6FNzwa+WrSy429JzwDXltSnkRNdk4Kkb0yKeGcE392CL9xxRaf8J6u9D/Pb7r7nGLqYqwuaUdF7KpwW01TtxY5y6/y91yvYwZ37SoD7nDHgzvCGDpGK9xtJbk3KOlVsytdndfaWkMe29wJlgsZtDRxRBbW39+vzhPybq4LESnFQIUS5b6gGr+qcR9oy70UfMASRsMjEjnD4LOOjHS3KKrz1vQc6pD3atUBNDwLuynz5+Rnsp89hTffgxXkQHDLCvojDoQnx/sX+k6fuiV/VO11wiJ/4kCUdUQE6rPnxaSvVym4JFH+soWaSgx4aVNOx5TI1XVRU0udzR0E7Qs+sDl8zY4mmcRC2HS2ashvEyIO3zIXUKtGr67NIrV00KbjNXZQcB0qZrYycZgomDCEBD00Bo8FgkU5FQoLfHW/x01JIDQOf+H+Q3UbgoJj7S04DES5UYQKcuWg2Sj5l5TkNyRNggRypxu6kjS2fy4qZZOYG7zjK93cgfaEqFlp2kh/J9pwJ4eyGCyg4ns4EBtrZIzPn1fndu5/ERqulhcKivR841MK5KfoH7r1BkJ7c56IVbxBAmIDrzB7srz8ci/xVyBmb41wNbz6JMPRzC15ZaQ4XHgqpBecCqXHEOKJyI9qRYk9dmen271hc=
   on:
     branch: master
 
 after_deploy:
-- "echo 'Successfully deployed to PYPI'"
+- echo 'Successfully deployed to PYPI'
