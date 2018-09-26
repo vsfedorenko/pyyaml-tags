@@ -269,7 +269,10 @@ For coverage use `tox -e codecov` command.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+You are welcome to contribute ! Just submit your PR and become a part of PyYAML community!
+
+Please read [contributing.md](contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
 
 ## Versioning
 
@@ -277,9 +280,15 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Vadim Fedorenko** - *Initial work* - [Meiblorn](https://github.com/meiblorn)
+* **Vadim Fedorenko** - [Meiblorn](https://github.com/meiblorn) -*Initial work*
+
+See also the list of [authors](authors.md) who participated in this project.
+
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
+## Acknowledgments
+
+* It's my first Python opensource project. Hah.
