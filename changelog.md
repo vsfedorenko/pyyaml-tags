@@ -3,3 +3,5 @@
 
 - 1.0.1 - Added `readme.md` and `contributing.md` files. 
           Changed `authors.md` and `changelog.md` files
+ 
+- 1.0.2 - Changed configuration for the Travis CI PyPI deployment 
