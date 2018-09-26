@@ -22,7 +22,7 @@ class EnvTag(with_metaclass(TagAutoRegister(), BaseTag)):
         if not var:
             raise ValueError("No environment variable were specified")
 
-        if not var in os.environ:
+        if var not in os.environ:
             raise ValueError(
                 'Environment variable \'{}\' is not set'.format(var)
             )
