@@ -1,6 +1,6 @@
 import io
-from shutil import rmtree
 from os.path import abspath, dirname, join
+from shutil import rmtree
 
 from setuptools import find_packages, setup
 
@@ -19,9 +19,9 @@ def cleanup():
 
 
 def get_about():
-    with io.open(join (package_dir, '__about__.py'), encoding='utf-8') as f:
+    with io.open(join(package_dir, '__about__.py'), encoding='utf-8') as f:
         about = {}
-        exec (f.read(), about)
+        exec(f.read(), about)
     return about
 
 
