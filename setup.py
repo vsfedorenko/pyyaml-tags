@@ -1,24 +1,25 @@
 import io
+from shutil import rmtree
+from os.path import abspath, dirname, join
 
-from path import Path
 from setuptools import find_packages, setup
 
-root_dir = Path(__file__).parent.abspath()
+root_dir = abspath(dirname(__file__))
 
-dist_dir = root_dir / 'dist'
-build_dir = root_dir / 'build'
+dist_dir = join(root_dir, 'dist')
+build_dir = join(root_dir, 'build')
 
-src_dir = root_dir / 'src'
-package_dir = src_dir / 'yaml_tags'
+src_dir = join(root_dir, 'src')
+package_dir = join(src_dir, 'yaml_tags')
 
 
 def cleanup():
-    build_dir.rmtree_p()
-    dist_dir.rmtree_p()
+    rmtree(build_dir, ignore_errors=True)
+    rmtree(dist_dir, ignore_errors=True)
 
 
 def get_about():
-    with io.open(package_dir / '__about__.py', encoding='utf-8') as f:
+    with io.open(join (package_dir, '__about__.py'), encoding='utf-8') as f:
         about = {}
         exec (f.read(), about)
     return about
