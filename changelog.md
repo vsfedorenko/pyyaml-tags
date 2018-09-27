@@ -7,4 +7,7 @@
 - 1.0.2 - Changed configuration for the Travis CI PyPI deployment 
 
 - 1.0.3 - Changed Travis CI PyPI deployment destination Python version.
-          Reconfigured 'deploy_on' condition. 
+          Reconfigured 'deploy_on' condition.
+          
+- 1.0.4 - Updated setup.py flow. Added coverage badges to readme.md file. 
+          Fixed tags link in the readme.md file.         

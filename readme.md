@@ -5,8 +5,8 @@ Adds to PyYAML custom tags support
 
 Branch   | CI status
 ---------|-------------------
-master   | [![Build Status](https://travis-ci.org/meiblorn/pyyaml-tags.svg?branch=master)](https://travis-ci.org/meiblorn/pyyaml-tags)
-develop  | [![Build Status](https://travis-ci.org/meiblorn/pyyaml-tags.svg?branch=develop)](https://travis-ci.org/meiblorn/pyyaml-tags)
+master   | [![Build Status](https://travis-ci.org/meiblorn/pyyaml-tags.svg?branch=master)](https://travis-ci.org/meiblorn/pyyaml-tags)[![codecov](https://codecov.io/gh/meiblorn/pyyaml-tags/branch/master/graph/badge.svg)](https://codecov.io/gh/meiblorn/pyyaml-tags)
+develop  | [![Build Status](https://travis-ci.org/meiblorn/pyyaml-tags.svg?branch=develop)](https://travis-ci.org/meiblorn/pyyaml-tags)[![codecov](https://codecov.io/gh/meiblorn/pyyaml-tags/branch/develop/graph/badge.svg)](https://codecov.io/gh/meiblorn/pyyaml-tags)
 
 ## Getting Started
 
@@ -276,7 +276,7 @@ Please read [contributing.md](contributing.md) for details on our code of conduc
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/meiblorn/pyyaml-tags/tags). 
 
 ## Authors
 
